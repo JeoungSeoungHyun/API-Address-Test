@@ -39,7 +39,7 @@ public class UserController {
 
         UtilValid.에러처리(bindingResult);
 
-        userService.회원가입(joinReqDto);
-        return "redirect:/";
+        userService.회원가입(joinReqDto.toEntity());
+        return "redirect:/login-form";
     }
 }

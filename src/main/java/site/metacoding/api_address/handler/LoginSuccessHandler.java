@@ -26,7 +26,7 @@ public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 
         HttpSession session = request.getSession();
         session.setAttribute("principal", principal);
-        System.out.println("로그인 잘 됨 : " + session.getAttribute("principal"));
+
         response.sendRedirect("/");
     }
 
