@@ -42,4 +42,10 @@ public class UserController {
         userService.회원가입(joinReqDto.toEntity());
         return "redirect:/login-form";
     }
+
+    @GetMapping("/addrFind")
+    public String addrFind() {
+        System.out.println("실행됨");
+        return "jusoPopup";
+    }
 }

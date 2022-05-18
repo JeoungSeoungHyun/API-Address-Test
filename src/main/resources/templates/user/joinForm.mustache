@@ -8,9 +8,28 @@
       <input type="password" class="form-control" placeholder="Enter password" name="password">
     </div>
     <div class="form-group">
+        <div class="d-flex justify-content-end">
+            <button id="btn-find" class="btn btn-info" type="button" >주소 찾기</button>
+        </div>
       <input type="address" class="form-control" placeholder="Enter address" name="address">
     </div>
-    <button type="submit" class="btn btn-primary">로그인</button>
+    <button type="submit" class="btn btn-primary" >로그인</button>
   </form>
+
+  <script>
+
+    let callback = ()=>{
+        alert("되나");
+    }
+
+    let goPopup = () =>{
+        let popup = window.open("/addrFind","주소찾기",
+                "주소찾기","width=570,height=420,scrollbars=yes,resizeable=yes")
+    }
+
+    $("#btn-find").click(()=>{
+        goPopup();
+    });
+  </script>
 
 {{>/layout/footer}}
