@@ -1,6 +1,5 @@
 package site.metacoding.api_address.util;
 
-// 페이지 요청시 결국 브라우저는 html을 해석하기 때문에 리턴
 public class Script {
 
     public static String href(String url) {

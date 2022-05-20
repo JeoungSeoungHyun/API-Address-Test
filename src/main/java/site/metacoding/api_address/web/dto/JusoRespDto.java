@@ -9,5 +9,6 @@ import lombok.NoArgsConstructor;
 @Data
 public class JusoRespDto {
 
+    private String inputYn;
     private String roadFullAddr;
 }
