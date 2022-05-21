@@ -16,6 +16,9 @@
 
 <body>
 
+    {{#principal}}
+    <input id="principalId" type="hidden" value="{{id}}" /> {{/principal}}
+
     <div class="container">
         <h2>로그인 시스템</h2>
         <br/>
@@ -26,7 +29,7 @@
             </li>
             {{#principal}}
             <li class="nav-item">
-                <a class="nav-link" href="#">회원정보 수정</a>
+                <a class="nav-link" href="/s/user/{{id}}">회원정보</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="/logout">로그아웃</a>

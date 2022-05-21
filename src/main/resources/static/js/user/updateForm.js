@@ -1,17 +1,11 @@
 let valid = {
-    username: {
-        state: false,
-        msg: ""
-    },
     password: {
         state: false,
         msg: ""
     },
 }
 
-$("#username").focusout(() => {
-    usernameSameCheck();
-});
+
 $("#password").focusout(() => {
     passwordSameCheck();
 });
@@ -23,25 +17,6 @@ $("#password-check").focusout(() => {
 $("#address").focusin(() => {
     $("#btn-find").click();
 });
-
-async function usernameSameCheck() {
-    let username = $("#username").val();
-
-    let response = await fetch(`/api/user/username/same-check?username=${username}`);
-    let responseParse = await response.json();
-
-    if (response.status === 200) {
-        if (!responseParse) {
-            valid.username.state = false;
-            valid.username.msg = "유저네임이 중복되었습니다.";
-        } else {
-            valid.username.state = true;
-            valid.username.msg = "";
-        }
-    } else {
-        alert(responseParse);
-    }
-}
 
 function passwordSameCheck() {
     let password = $("#password").val();
