@@ -1,4 +1,4 @@
-package site.metacoding.api_address.config;
+package site.metacoding.login_system.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -7,7 +7,8 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import site.metacoding.api_address.handler.LoginSuccessHandler;
+import site.metacoding.login_system.handler.LoginFailureHandler;
+import site.metacoding.login_system.handler.LoginSuccessHandler;
 
 @EnableWebSecurity // 해당 파일로 시큐리티가 활성화
 @Configuration
@@ -30,6 +31,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login-form")
                 .loginProcessingUrl("/login")
-                .successHandler(new LoginSuccessHandler());
+                .failureHandler(new LoginFailureHandler())
+                .successHandler(new LoginSuccessHandler())
+                .and()
+                .logout()
+                .invalidateHttpSession(true).deleteCookies("JSESSIONID");
     }
 }

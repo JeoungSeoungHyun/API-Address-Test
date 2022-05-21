@@ -1,4 +1,4 @@
-package site.metacoding.api_address.util;
+package site.metacoding.login_system.util;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 
-import site.metacoding.api_address.handler.ex.CustomException;
+import site.metacoding.login_system.handler.ex.CustomException;
 
 public class UtilValid {
 

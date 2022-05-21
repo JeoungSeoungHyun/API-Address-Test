@@ -1,0 +1,64 @@
+/* 패딩 */
+
+.my_p_md {
+    padding: 15px;
+}
+
+.my_pt_md {
+    padding-top: 15px;
+}
+
+.my_pb_md {
+    padding-bottom: 15px;
+}
+
+.my_pl_md {
+    padding-left: 15px;
+}
+
+.my_pr_md {
+    padding-right: 15px;
+}
+
+.my_ph_md {
+    padding-top: 15px;
+    padding-left: 15px;
+}
+
+.my_pw_md {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+
+/* 마진 */
+
+.my_m_md {
+    margin: 15px;
+}
+
+.my_mt_md {
+    margin-top: 15px;
+}
+
+.my_mb_md {
+    margin-bottom: 15px;
+}
+
+.my_ml_md {
+    margin-left: 15px;
+}
+
+.my_mr_md {
+    margin-right: 15px;
+}
+
+.my_mh_md {
+    margin-top: 15px;
+    margin-left: 15px;
+}
+
+.my_mw_md {
+    margin-left: 15px;
+    margin-right: 15px;
+}

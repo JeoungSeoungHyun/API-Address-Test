@@ -1,4 +1,4 @@
-package site.metacoding.api_address.web.dto;
+package site.metacoding.login_system.web.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

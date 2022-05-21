@@ -1,4 +1,4 @@
-package site.metacoding.api_address.web.dto;
+package site.metacoding.login_system.web.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -7,7 +7,7 @@ import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import site.metacoding.api_address.domain.User;
+import site.metacoding.login_system.domain.User;
 
 @AllArgsConstructor
 @NoArgsConstructor

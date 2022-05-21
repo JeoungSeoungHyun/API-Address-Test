@@ -1,4 +1,4 @@
-package site.metacoding.api_address.util;
+package site.metacoding.login_system.util;
 
 public class Script {
 

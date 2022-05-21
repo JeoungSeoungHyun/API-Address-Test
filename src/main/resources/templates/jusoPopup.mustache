@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,38 +8,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
 </head>
+
 <body onload="init();">
-        {{#data}}
-        <input id="inputYn" type="hidden" value="{{inputYn}}"/>
-        <input id="roadFullAddr" type="hidden" value="{{roadFullAddr}}"/>
-        {{/data}}
-        <form id="form" name="form" method="get">
-            <input type="hidden" id="confmKey" name="confmKey" value=""/>
-            <input type="hidden" id="returnUrl" name="returnUrl" value=""/>
-            <input type="hidden" id=“resultType" name="resultType" value=""/>      
+    {{#data}}
+    <input id="inputYn" type="hidden" value="{{inputYn}}" />
+    <input id="roadFullAddr" type="hidden" value="{{roadFullAddr}}" /> {{/data}}
+    <form id="form" name="form" method="get">
+        <input type="hidden" id="confmKey" name="confmKey" value="" />
+        <input type="hidden" id="returnUrl" name="returnUrl" value="" />
+        <input type="hidden" id=“resultType " name="resultType " value=" "/>      
         </form> 
 </body>
-<script>
 
-    let init=()=>{
-        let url = location.href;
-
-        let confmKey = "U01TX0FVVEgyMDIyMDUxODIwNTkzODExMjU4NTc=";
-        let resultType = "4";
-        let inputYn = $("#inputYn").val();
-        let roadFullAddr = $("#roadFullAddr").val();
-
-        if(inputYn != "Y"){
-            $("#confmKey").val(confmKey);
-            $("#returnUrl").val(url);
-            $("#resultType").val(resultType);
-            $("#form").attr("action","https://www.juso.go.kr/addrlink/addrLinkUrl.do");
-            $("#form")[0].submit();
-        } else {
-            opener.jusoCallBack(roadFullAddr);
-            window.close();
-        }
-    }
-</script>
-
+<script src="/js/jusoPopup.js "></script>
 </html>

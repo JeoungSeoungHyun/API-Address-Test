@@ -1,4 +1,4 @@
-package site.metacoding.api_address.domain;
+package site.metacoding.login_system.domain;
 
 import java.util.Optional;
 

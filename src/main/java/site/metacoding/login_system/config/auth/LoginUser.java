@@ -1,4 +1,4 @@
-package site.metacoding.api_address.config.auth;
+package site.metacoding.login_system.config.auth;
 
 import java.util.Collection;
 
@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import site.metacoding.api_address.domain.User;
+import site.metacoding.login_system.domain.User;
 
 @Data
 @RequiredArgsConstructor

@@ -1,36 +1,24 @@
 {{>/layout/header}}
 
-<form action="/join" method="post">
+<form action="/join" method="post" onsubmit="return validation()">
+    <div class="my_error_box my_hidden my_mb_md"></div>
     <div class="form-group">
-      <input type="username" class="form-control" placeholder="Enter username" name="username">
+        <input id="username" type="username" class="form-control" placeholder="Enter username" name="username" required />
     </div>
     <div class="form-group">
-      <input type="password" class="form-control" placeholder="Enter password" name="password">
+        <input id="password" type="password" class="form-control" placeholder="Enter password" name="password" required/>
+    </div>
+    <div class="form-group">
+        <input id="password-check" type="password" class="form-control" placeholder="Check password" required/>
     </div>
     <div class="form-group">
         <div class="d-flex justify-content-end">
-            <button id="btn-find" class="btn btn-info" type="button" >주소 찾기</button>
+            <button id="btn-find" class="btn btn-info" type="button">주소 찾기</button>
         </div>
-      <input id="address" type="address" class="form-control" placeholder="Enter address" name="address" value="{{#data}}{{data}}{{/data}}">
+        <input id="address" type="address" class="form-control" placeholder="Find address" name="address" required/>
     </div>
-    <button type="submit" class="btn btn-primary" >로그인</button>
-  </form>
+    <button type="submit" class="btn btn-primary">로그인</button>
+</form>
 
-  <script>
-
-    // let으로 만들면 window가 init할때 생성을 못하는 것같다.!! 이 부분은 좀 더 알아보깋
-    function jusoCallBack(roadFullAddr){
-      $("#address").val(roadFullAddr);
-    };
-
-    let goPopup = () =>{
-        let pop =  window.open(`/addrFind`,"주소찾기","width=570,height=420,scrollbars=yes,resizeable=yes")
-
-    }
-
-    $("#btn-find").click(()=>{
-        goPopup();
-    });
-  </script>
-
+<script src="/js/user/joinForm.js"></script>
 {{>/layout/footer}}

@@ -1,4 +1,4 @@
-package site.metacoding.api_address;
+package site.metacoding.login_system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -6,10 +6,10 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @EnableJpaAuditing
 @SpringBootApplication
-public class ApiAddressApplication {
+public class LoginSystemApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiAddressApplication.class, args);
+		SpringApplication.run(LoginSystemApplication.class, args);
 	}
 
 }

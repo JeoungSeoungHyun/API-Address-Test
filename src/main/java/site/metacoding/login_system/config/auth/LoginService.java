@@ -1,4 +1,4 @@
-package site.metacoding.api_address.config.auth;
+package site.metacoding.login_system.config.auth;
 
 import java.util.Optional;
 
@@ -8,8 +8,9 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.api_address.domain.User;
-import site.metacoding.api_address.domain.UserRepository;
+import site.metacoding.login_system.domain.User;
+import site.metacoding.login_system.domain.UserRepository;
+import site.metacoding.login_system.handler.ex.CustomException;
 
 @RequiredArgsConstructor
 @Service

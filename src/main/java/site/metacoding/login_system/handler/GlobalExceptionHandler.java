@@ -1,13 +1,13 @@
-package site.metacoding.api_address.handler;
+package site.metacoding.login_system.handler;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import site.metacoding.api_address.handler.ex.CustomApiException;
-import site.metacoding.api_address.handler.ex.CustomException;
-import site.metacoding.api_address.util.Script;
+import site.metacoding.login_system.handler.ex.CustomApiException;
+import site.metacoding.login_system.handler.ex.CustomException;
+import site.metacoding.login_system.util.Script;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

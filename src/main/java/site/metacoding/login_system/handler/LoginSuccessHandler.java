@@ -1,4 +1,4 @@
-package site.metacoding.api_address.handler;
+package site.metacoding.login_system.handler;
 
 import java.io.IOException;
 
@@ -10,8 +10,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 
-import site.metacoding.api_address.config.auth.LoginUser;
-import site.metacoding.api_address.domain.User;
+import site.metacoding.login_system.config.auth.LoginUser;
+import site.metacoding.login_system.domain.User;
 
 public class LoginSuccessHandler implements AuthenticationSuccessHandler {
 

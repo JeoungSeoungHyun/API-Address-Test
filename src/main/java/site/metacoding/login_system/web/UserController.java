@@ -1,20 +1,20 @@
-package site.metacoding.api_address.web;
+package site.metacoding.login_system.web;
 
 import javax.validation.Valid;
 
-import org.springframework.data.repository.query.Param;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.api_address.service.UserService;
-import site.metacoding.api_address.util.UtilValid;
-import site.metacoding.api_address.web.dto.JoinReqDto;
-import site.metacoding.api_address.web.dto.JusoRespDto;
+import site.metacoding.login_system.service.UserService;
+import site.metacoding.login_system.util.UtilValid;
+import site.metacoding.login_system.web.dto.JoinReqDto;
+import site.metacoding.login_system.web.dto.JusoRespDto;
 
 @RequiredArgsConstructor
 @Controller
@@ -58,15 +58,12 @@ public class UserController {
         return "jusoPopup";
     }
 
-    @GetMapping("/test")
-    public String testAddr() {
-        return "jusoPopupTest";
-    }
+    @GetMapping("/api/user/username/same-check")
+    public ResponseEntity<?> usermaeSameCheck(String username) {
+        // true(같지 않다.)
+        boolean isNotSame = userService.유저네임중복체크(username);
+        return new ResponseEntity<>(isNotSame, HttpStatus.OK);
 
-    @PostMapping("/test")
-    public String testAddrResp(JusoRespDto jusoRespDto, Model model) {
-        model.addAttribute("data", jusoRespDto);
-        return "jusoPopupTest";
     }
 
 }

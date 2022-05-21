@@ -1,4 +1,4 @@
-package site.metacoding.api_address.handler.ex;
+package site.metacoding.login_system.handler.ex;
 
 public class CustomException extends RuntimeException {
 

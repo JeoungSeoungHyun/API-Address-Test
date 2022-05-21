@@ -1,4 +1,6 @@
-package site.metacoding.api_address.service;
+package site.metacoding.login_system.service;
+
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -6,8 +8,8 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import lombok.RequiredArgsConstructor;
-import site.metacoding.api_address.domain.User;
-import site.metacoding.api_address.domain.UserRepository;
+import site.metacoding.login_system.domain.User;
+import site.metacoding.login_system.domain.UserRepository;
 
 @RequiredArgsConstructor
 @Service
@@ -23,6 +25,16 @@ public class UserService {
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
         user.setPassword(encPassword);
         userRepository.save(user);
+    }
+
+    public boolean 유저네임중복체크(String username) {
+        Optional<User> userOp = userRepository.FindByUsername(username);
+
+        if (userOp.isPresent()) {
+            return false;
+        } else {
+            return true;
+        }
     }
 
 }
