@@ -25,6 +25,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         // super.configure(http); => 기본 시큐리티 활성화
         http.csrf().disable(); // postman으로 테스트하기 위해 놔둔다.
         http.authorizeRequests()
+                // s가 붙는 모든 매핑에 확인
                 .antMatchers("/s/**").authenticated()
                 .anyRequest().permitAll()
                 .and()
@@ -34,6 +35,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(new LoginFailureHandler())
                 .successHandler(new LoginSuccessHandler())
                 .and()
+                // 로그아웃시 세션을 무효화
                 .logout()
                 .invalidateHttpSession(true).deleteCookies("JSESSIONID");
     }

@@ -1,3 +1,20 @@
+// 수정 버튼 클릭 리스너
+$("#btn-update-info").click(() => {
+    infoUpdate();
+});
+
+// 주소 찾기 버튼 클릭 리스너
+$("#btn-find").click(() => {
+    goPopup();
+});
+
+// 주소를 직접 입력하지 않고 버튼이 눌려지도록 하는 함수
+$("#address").focusin(() => {
+    $("#btn-find").click();
+});
+
+
+// 수정 요청
 async function infoUpdate() {
     let userId = $("#principalId").val();
     let updateDto = {
@@ -27,23 +44,12 @@ async function infoUpdate() {
     }
 }
 
-$("#btn-update-info").click(() => {
-    infoUpdate();
-});
-
+// 팝업창으로부터 주소를 받기 위한 콜백함수(!! let으로 만드는 경우 동작하지 않는다.)
 function jusoCallBack(roadFullAddr) {
     $("#address").val(roadFullAddr);
 };
 
+// 팝업창을 열기 위한 함수
 function goPopup() {
-    let pop = window.open(`/addrFind`, "주소찾기", "width=570,height=420,scrollbars=yes,resizeable=yes")
-
+    let pop = window.open(`/popup`, "주소찾기", "width=570,height=420,scrollbars=yes,resizeable=yes")
 }
-
-$("#btn-find").click(() => {
-    goPopup();
-});
-
-$("#address").focusin(() => {
-    $("#btn-find").click();
-});

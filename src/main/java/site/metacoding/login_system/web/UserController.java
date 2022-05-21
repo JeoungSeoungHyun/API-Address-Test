@@ -56,12 +56,14 @@ public class UserController {
         return "redirect:/login-form";
     }
 
-    @GetMapping("/addrFind")
+    // 팝업창 요청
+    @GetMapping("/popup")
     public String addrFind() {
         return "jusoPopup";
     }
 
-    @PostMapping("/addrFind")
+    // 주소API 응답 주소 매핑(Post)
+    @PostMapping("/popup")
     public String addrResp(JusoRespDto jusoRespDto, Model model) {
 
         model.addAttribute("data", jusoRespDto);
@@ -69,6 +71,7 @@ public class UserController {
         return "jusoPopup";
     }
 
+    // 아이디 중복체크 요청 매핑
     @GetMapping("/api/user/username/same-check")
     public ResponseEntity<?> usermaeSameCheck(String username) {
         // true(같지 않다.)
@@ -76,12 +79,14 @@ public class UserController {
         return new ResponseEntity<>(isNotSame, HttpStatus.OK);
     }
 
+    // 유저정보 요청 매핑
     @GetMapping("/s/user/{userId}")
     public String userDetail(@PathVariable Integer userId, @AuthenticationPrincipal LoginUser loginUser, Model model) {
         User principal = (User) loginUser.getUser();
-        UserDetailRespDto updateRespDto = userService.유저정보찾기(userId, principal);
 
+        UserDetailRespDto updateRespDto = userService.유저정보찾기(userId, principal);
         model.addAttribute("data", updateRespDto);
+
         return "user/userDetail";
     }
 
@@ -89,9 +94,10 @@ public class UserController {
     public String infoUpdateForm(@PathVariable Integer userId, @AuthenticationPrincipal LoginUser loginUser,
             Model model) {
         User principal = (User) loginUser.getUser();
-        UserDetailRespDto updateRespDto = userService.유저정보찾기(userId, principal);
 
+        UserDetailRespDto updateRespDto = userService.유저정보찾기(userId, principal);
         model.addAttribute("data", updateRespDto);
+
         return "user/infoUpdateForm";
     }
 
@@ -102,7 +108,6 @@ public class UserController {
         boolean result = false;
 
         UtilValid.데이터요청에러처리(bindingResult);
-
         result = userService.회원정보수정(userId, principal, infoUpdateReqDto);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
@@ -112,7 +117,7 @@ public class UserController {
     public String passwordUpdateForm(@PathVariable Integer userId, @AuthenticationPrincipal LoginUser loginUser,
             Model model) {
         User principal = (User) loginUser.getUser();
-        // 1. 권한확인
+        // 권한확인
         if (userId != principal.getId()) {
             throw new CustomException("권한이 없습니다");
         }
@@ -126,7 +131,6 @@ public class UserController {
         boolean result = false;
 
         UtilValid.데이터요청에러처리(bindingResult);
-
         result = userService.회원정보수정(userId, principal, passwordUpdateReqDto);
 
         return new ResponseEntity<>(result, HttpStatus.OK);

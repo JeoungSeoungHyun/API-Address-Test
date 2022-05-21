@@ -1,3 +1,9 @@
+// 패스워드 수정 버튼 클릭 리스너
+$("#btn-update-password").click(() => {
+    passwordSameCheck();
+});
+
+// 패스워드 수정 요청 함수
 async function passwordUpdate() {
     let userId = $("#principalId").val();
     let updateDto = {
@@ -27,6 +33,7 @@ async function passwordUpdate() {
     }
 }
 
+// 패스워드 일치 확인 함수
 function passwordSameCheck() {
     let password = $("#password").val();
     let samePassword = $("#password-check").val();
@@ -38,7 +45,3 @@ function passwordSameCheck() {
         $(".my_error_box").removeClass("my_hidden");
     }
 }
-
-$("#btn-update-password").click(() => {
-    passwordSameCheck();
-});

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 import lombok.RequiredArgsConstructor;
 import site.metacoding.login_system.domain.User;
 import site.metacoding.login_system.domain.UserRepository;
-import site.metacoding.login_system.handler.ex.CustomException;
 
 @RequiredArgsConstructor
 @Service

@@ -15,10 +15,13 @@ import site.metacoding.login_system.util.Script;
 
 public class LoginFailureHandler implements AuthenticationFailureHandler {
 
+    // 로그인이 실패했을 경우 응답해주기 위한 핸들러
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
             AuthenticationException exception) throws IOException, ServletException {
+        // 한글 출력 위해 utf-8 인코딩
         response.setContentType("text/html; charset=UTF-8");
+        // response를 통해 스트림으로 응답
         try {
             PrintWriter out = response.getWriter();
             out.print(Script.back("아이디 혹은 패스워드가 잘못되었습니다."));

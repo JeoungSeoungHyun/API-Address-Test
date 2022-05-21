@@ -26,6 +26,7 @@ public class UserService {
         // 패스워드 암호화
         String rawPassword = user.getPassword();
         String encPassword = bCryptPasswordEncoder.encode(rawPassword);
+
         user.setPassword(encPassword);
         userRepository.save(user);
     }
