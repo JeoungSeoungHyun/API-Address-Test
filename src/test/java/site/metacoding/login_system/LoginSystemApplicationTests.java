@@ -1,10 +1,10 @@
-package site.metacoding.api_address;
+package site.metacoding.login_system;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class ApiAddressApplicationTests {
+class LoginSystemApplicationTests {
 
 	@Test
 	void contextLoads() {
