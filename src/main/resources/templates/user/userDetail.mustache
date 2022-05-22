@@ -1,9 +1,18 @@
 {{>/layout/header}} {{#data}}
 <div class="card" style="width:400px">
     <div class="d-flex justify-content-center my_mt_md">
+        {{#profileImg}}
         <div class="my_box_profile_img">
-            <img class="my_fit_rounded_img" src="https://i1.sndcdn.com/avatars-000373392764-zp0p80-t500x500.jpg" />
+            <img id="profile-img" class="my_fit_rounded_img" src="/upload/{{profileImg}}" />
         </div>
+        {{/profileImg}} {{^profileImg}}
+        <div class="my_box_profile_img">
+            <img id="profile-img" class="my_fit_rounded_img" src="https://i1.sndcdn.com/avatars-000373392764-zp0p80-t500x500.jpg" />
+        </div>
+        {{/profileImg}}
+        <form id="fileForm">
+            <input id="profile-img-input" class="my_hidden" type="file" name="profileImgFile" />
+        </form>
     </div>
     <div class="card-body">
         <div>
@@ -13,7 +22,7 @@
             <div class="my_mt_md">{{address}}</div>
         </div>
         <div class="my_mt_md">
-            <a href="#" class="btn btn-primary">프로필 수정</a>
+            <a id="btn-profile-img" href="javascript:;" class="btn btn-primary">프로필 수정</a>
             <a href="/s/user/{{id}}/info-update-form" class="btn btn-primary">정보수정</a>
             <a href="/s/user/{{id}}/password-update-form" class="btn btn-primary">비밀번호 수정</a>
         </div>
@@ -22,5 +31,5 @@
 
 {{/data}}
 
-<script src="/js/user/updateForm.js"></script>
+<script src="/js/user/userDetail.js"></script>
 {{>/layout/footer}}

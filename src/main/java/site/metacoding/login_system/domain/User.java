@@ -38,6 +38,9 @@ public class User {
     @Column(length = 300, nullable = false)
     private String address;
 
+    @Column(nullable = true)
+    private String profileImg;
+
     @CreatedDate
     private LocalDateTime createDate;
 

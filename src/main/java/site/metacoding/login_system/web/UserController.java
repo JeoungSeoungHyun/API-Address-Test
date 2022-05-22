@@ -1,5 +1,6 @@
 package site.metacoding.login_system.web;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
 import org.springframework.http.HttpStatus;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.login_system.config.auth.LoginUser;
@@ -31,6 +33,7 @@ import site.metacoding.login_system.web.dto.user.UserDetailRespDto;
 public class UserController {
 
     private final UserService userService;
+    private final HttpSession session;
 
     @GetMapping("/")
     public String main() {
@@ -131,7 +134,18 @@ public class UserController {
         boolean result = false;
 
         UtilValid.데이터요청에러처리(bindingResult);
-        result = userService.회원정보수정(userId, principal, passwordUpdateReqDto);
+        result = userService.패스워드수정(userId, principal, passwordUpdateReqDto);
+
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @PutMapping("/s/api/user/{userId}/img")
+    public ResponseEntity<?> imgUpdate(@PathVariable Integer userId, @AuthenticationPrincipal LoginUser loginUser,
+            MultipartFile profileImgFile) {
+        User principal = (User) loginUser.getUser();
+        boolean result = false;
+
+        result = userService.프로필이미지수정(session, principal, profileImgFile);
 
         return new ResponseEntity<>(result, HttpStatus.OK);
     }

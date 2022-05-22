@@ -2,14 +2,19 @@ package site.metacoding.login_system.service;
 
 import java.util.Optional;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import lombok.RequiredArgsConstructor;
 import site.metacoding.login_system.domain.User;
 import site.metacoding.login_system.domain.UserRepository;
 import site.metacoding.login_system.handler.ex.CustomException;
+import site.metacoding.login_system.util.UtilFileUpload;
 import site.metacoding.login_system.web.dto.user.InfoUpdateReqDto;
 import site.metacoding.login_system.web.dto.user.PasswordUpdateReqDto;
 import site.metacoding.login_system.web.dto.user.UserDetailRespDto;
@@ -20,6 +25,9 @@ public class UserService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Value("${file.path}")
+    String uploadFolder;
 
     @Transactional
     public void 회원가입(User user) {
@@ -57,7 +65,8 @@ public class UserService {
         UserDetailRespDto updateRespDto = new UserDetailRespDto(
                 userEntity.getId(),
                 userEntity.getUsername(),
-                userEntity.getAddress());
+                userEntity.getAddress(),
+                userEntity.getProfileImg());
 
         return updateRespDto;
     }
@@ -79,7 +88,7 @@ public class UserService {
     }
 
     @Transactional
-    public boolean 회원정보수정(Integer userId, User principal, PasswordUpdateReqDto passwordUpdateReqDto) {
+    public boolean 패스워드수정(Integer userId, User principal, PasswordUpdateReqDto passwordUpdateReqDto) {
         // 1. 권한확인
         if (!mAuthCheck(userId, principal)) {
             throw new CustomException("권한이 없습니다");
@@ -94,6 +103,22 @@ public class UserService {
 
         // 4. 정보수정
         userEntity.setPassword(encPassword);
+
+        return true;
+    }
+
+    @Transactional
+    public boolean 프로필이미지수정(HttpSession session, User principal, MultipartFile multipartFile) {
+
+        // 1. 파일 저장
+        String profileImg = UtilFileUpload.write(uploadFolder, multipartFile);
+
+        // 2. 정보수정
+        User userEntity = mFindUserEntity(principal.getId());
+        userEntity.setProfileImg(profileImg);
+
+        // 3. 세션 수정
+        session.setAttribute("principal", userEntity);
 
         return true;
     }
