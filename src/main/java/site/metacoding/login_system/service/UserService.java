@@ -123,6 +123,20 @@ public class UserService {
         return true;
     }
 
+    @Transactional
+    public boolean 회원탈퇴(HttpSession session) {
+
+        User principal = (User) session.getAttribute("principal");
+
+        // 2. 회원탈퇴
+        userRepository.deleteById(principal.getId());
+
+        // 3. 세션 무효화
+        session.invalidate();
+
+        return true;
+    }
+
     private User mFindUserEntity(Integer userId) {
         Optional<User> userOp = userRepository.findById(userId);
 

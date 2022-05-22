@@ -9,6 +9,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -147,6 +148,15 @@ public class UserController {
 
         result = userService.프로필이미지수정(session, principal, profileImgFile);
 
+        return new ResponseEntity<>(result, HttpStatus.OK);
+    }
+
+    @DeleteMapping("/s/api/user/{userId}")
+    public ResponseEntity<?> deleteUser() {
+        boolean result = false;
+
+        result = userService.회원탈퇴(session);
+        System.out.println("result : " + result);
         return new ResponseEntity<>(result, HttpStatus.OK);
     }
 
